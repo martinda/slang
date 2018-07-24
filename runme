@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+# Get slang and unzip
+curl -L -X GET https://github.com/MikePopoloski/slang/archive/master.zip -o master.zip
+unzip master.zip
+cd slang-master
+
+# Build slang
+mkdir build
+cd build
+cmake ..
+make -j 8
+
+# Run the tests
+bin/unittests
